@@ -1,0 +1,65 @@
+---
+import BaseHead from '../components/BaseHead.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+import { SITE_TITLE, SITE_DESCRIPTION } from '../config';
+import styles from '../styles/css/landing.module.css';
+import {SiTypescript, SiRust} from 'react-icons/si';
+import {TbBrandKotlin} from 'react-icons/tb';
+---
+
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<BaseHead title={SITE_TITLE} description={SITE_DESCRIPTION} />
+	</head>
+	<body>
+		<main class={styles.container}>
+			<section class={styles.hero}>
+				<div class={styles.hero_text}>
+					<p>Hello, my name is</p>
+					<div class={styles["hero_text--name"]}>
+						<h1>Gilbert O.</h1>
+					</div>
+					<div class={styles.hero_icons}>
+						<a class={`${styles['btn-link']} ${styles.typescript}`} href="https://www.typescriptlang.org/"><SiTypescript/> Typescript</a>
+						<a class={`${styles['btn-link']} ${styles.kotlin}`} href="https://kotlinlang.org/"><TbBrandKotlin/> Kotlin</a>
+						<a class={`${styles['btn-link']} ${styles.rust}`} href="https://www.rust-lang.org/"><SiRust/> Rust</a>
+					</div>
+				</div>
+				<div class={styles.hero_image}>
+					<div>
+						<img src="/me.jpg" id="hero_image"/>
+						<span id="hero_span">Nubb</span>
+					</div>
+				</div>
+			</section>
+			
+			<section class={styles.aboutMe}>
+				<h2>About Me</h2>
+				<p>
+					I am a software developer with a passion for learning new things. 
+					I currently excel in Typescript, Kotlin and Rust projects! 
+					Currently the lead fullstack developer at <a href="https://www.forestblock.net/" class="forestblock">Forestblock</a>.
+
+					I'm also a huge <a href="https://www.minecraft.net/">Minecraft</a> enthusiast! I play mostly Survival and Bedwars.
+				</p>
+			</section>
+		</main>
+		<script>
+			const img = document.getElementById('hero_image');
+			const span = document.getElementById('hero_span');
+			img!.addEventListener('mousemove', (e) => {
+				const span = document.getElementById('hero_span');
+				const x = e.offsetX;
+				const y = e.offsetY;
+				span!.style.left = `${x}px`;
+				span!.style.top = `${y}px`;
+				span!.style.opacity = '1';
+			});
+			img!.addEventListener('mouseout', (e) => {
+				span!.style.opacity = '0';
+			});
+		</script>
+	</body>
+</html>
