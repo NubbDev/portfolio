@@ -6,6 +6,44 @@ import { SITE_TITLE, SITE_DESCRIPTION } from '../config';
 import styles from '../styles/css/landing.module.css';
 import {SiTypescript, SiRust} from 'react-icons/si';
 import {TbBrandKotlin} from 'react-icons/tb';
+import {FiMail} from 'react-icons/fi';
+import { FaTwitterSquare, FaGithubSquare } from 'react-icons/fa';
+import Age from '../components/Age.jsx';
+
+const languages = [
+	{
+		name: 'Typescript',
+		icon: SiTypescript,
+		link: 'https://www.typescriptlang.org/'
+	},
+	{
+		name: 'Kotlin',
+		icon: TbBrandKotlin,
+		link: 'https://kotlinlang.org/'
+	},
+	{
+		name: 'Rust',
+		icon: SiRust,
+		link: 'https://www.rust-lang.org/'
+	}
+];
+const socials = [
+	{
+		name: 'Email',
+		icon: FiMail,
+		link: 'mailto:busy.nuub@gmail.com'
+	},
+	{
+		name: 'Github',
+		icon: FaGithubSquare,
+		link: 'https://github.com/NubbDev'
+	},
+	{
+		name: 'Twitter',
+		icon: FaTwitterSquare,
+		link: 'https://twitter.com/gil_o7'
+	},
+]
 ---
 
 <!DOCTYPE html>
@@ -16,34 +54,57 @@ import {TbBrandKotlin} from 'react-icons/tb';
 	<body>
 		<main class={styles.container}>
 			<section class={styles.hero}>
-				<div class={styles.hero_text}>
-					<p>Hello, my name is</p>
-					<div class={styles["hero_text--name"]}>
-						<h1>Gilbert O.</h1>
+				<div>
+					<div class={styles.hero_text}>
+						<h6>Hello, my name is</h6>
+						<div class={styles["hero_text--name"]}>
+							<h1>Gilbert O.</h1>
+						</div>
+						<div class={styles.hero_icons}>
+							{languages.map(lang => (
+								<a target="_blank" class={`${styles['btn-link']} ${styles[lang.name.toLowerCase()]}`} href={lang.link}><lang.icon/> <p>{lang.name}</p></a>
+							))}
+						</div>
 					</div>
-					<div class={styles.hero_icons}>
-						<a class={`${styles['btn-link']} ${styles.typescript}`} href="https://www.typescriptlang.org/"><SiTypescript/> Typescript</a>
-						<a class={`${styles['btn-link']} ${styles.kotlin}`} href="https://kotlinlang.org/"><TbBrandKotlin/> Kotlin</a>
-						<a class={`${styles['btn-link']} ${styles.rust}`} href="https://www.rust-lang.org/"><SiRust/> Rust</a>
-					</div>
-				</div>
-				<div class={styles.hero_image}>
-					<div>
-						<img src="/me.jpg" id="hero_image"/>
-						<span id="hero_span">Nubb</span>
+					<div class={styles.hero_image}>
+						<div>
+							<img src="/me.jpg" id="hero_image"/>
+							<span id="hero_span">Nubb</span>
+						</div>
 					</div>
 				</div>
 			</section>
 			
-			<section class={styles.aboutMe}>
-				<h2>About Me</h2>
-				<p>
-					I am a software developer with a passion for learning new things. 
-					I currently excel in Typescript, Kotlin and Rust projects! 
-					Currently the lead fullstack developer at <a href="https://www.forestblock.net/" class="forestblock">Forestblock</a>.
+			<section>
+				<section class={styles.aboutMe}>
+					<div class={styles.info}>
+						<h2>About Me</h2>
+						<div class={styles.shortInfo}>
+							<ul>
+								<li class={styles.age}>
+									<Age client:load/>
+								</li>
+								<li class={styles.location}><p>Alberta</p>/<p>Canada</p></li>
+								<li class={styles.forestblock}><p>Lead Fullstack</p><a href="https://www.forestblock.net/">@Forestblock</a></li>
+								<li class={styles.socials}>
+									{socials.map(social => (
+										<a target="_blank" href={social.link} class={styles[social.name.toLowerCase()]}><social.icon className={styles[`svg`]}/></a>
+									))}
+								</li>
+							</ul>
+						</div>
+						<div class={styles.longInfo}>
+							<p>
+								I am a software developer with a passion for learning new things. 
+								I currently excel in Typescript, Kotlin and Rust projects! 
+								Currently the lead fullstack developer at .
+								
+								I'm also a huge <a href="https://www.minecraft.net/">Minecraft</a> enthusiast! I play mostly Survival and Bedwars.
+							</p>
+						</div>
+					</div>
+				</section>
 
-					I'm also a huge <a href="https://www.minecraft.net/">Minecraft</a> enthusiast! I play mostly Survival and Bedwars.
-				</p>
 			</section>
 		</main>
 		<script>

@@ -12,16 +12,18 @@
     "sass": "sass --watch src/styles/scss:src/styles/css"
   },
   "dependencies": {
+    "@astrojs/image": "^0.12.1",
     "@astrojs/mdx": "^0.12.1",
     "@astrojs/netlify": "^1.2.2",
     "@astrojs/react": "^1.2.2",
     "@astrojs/rss": "^1.1.0",
     "@astrojs/sitemap": "^1.0.0",
+    "@fontsource/ubuntu": "^4.5.11",
     "@types/react": "^18.0.21",
     "@types/react-dom": "^18.0.6",
     "astro": "^1.6.14",
-    "react": "^18.0.0",
-    "react-dom": "^18.0.0",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
     "react-icons": "^4.7.1"
   }
 }
